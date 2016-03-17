@@ -1,5 +1,5 @@
 package com.ricex.mirrormirror.controller;
 
-public class BaseController {
+public abstract class BaseController {
 
 }
