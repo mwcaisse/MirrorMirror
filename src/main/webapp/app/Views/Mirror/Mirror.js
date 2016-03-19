@@ -8,7 +8,9 @@ define("Views/Mirror/Mirror",
 	var vm = function() {
 		var self = this;
 
-		self.dateTime = new dateTime();		
+		self.dateTime = new dateTime();
+		
+		self.dateTime.load();
 		
 	};
 	

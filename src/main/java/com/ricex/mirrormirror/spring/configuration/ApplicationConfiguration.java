@@ -12,7 +12,9 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 import com.google.gson.Gson;
+import com.ricex.mirrormirror.controller.api.FortuneApiController;
 import com.ricex.mirrormirror.controller.view.MirrorViewController;
+import com.ricex.mirrormirror.manager.FortuneManager;
 import com.ricex.mirrormirror.util.GsonFactory;
 
 @Configuration
@@ -23,6 +25,18 @@ public class ApplicationConfiguration extends WebMvcConfigurationSupport {
 	@Bean
 	public MirrorViewController mirrorViewController() {
 		return new MirrorViewController();
+	}
+	
+	@Bean
+	public FortuneApiController fortuneApiController() {
+		return new FortuneApiController(fortuneManager());
+	}
+	
+	///// ------- Managers ----------- \\\\
+	
+	@Bean
+	public FortuneManager fortuneManager() {
+		return new FortuneManager();
 	}
 	
 	/*

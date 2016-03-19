@@ -19,9 +19,13 @@ define("Modules/DateTime/DateTime", ["Service/util", "Modules/DateTime/DateTimeB
 			return moment(self.currentTime()).format(formatString);
 		});
 		
-		util.runEverySecond(function() {
-			self.currentTime(new Date());
-		}, 1);
+		self.load = function() {
+			
+			util.runEverySecond(function() {
+				self.currentTime(new Date());
+			}, 1);
+		};		
+
 		
 	};
 	
