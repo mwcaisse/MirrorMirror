@@ -160,7 +160,7 @@ define(['module'], function (module) {
                 buildMap[name] = content;
             }
             text.addKoTemplate(name, strip, content);
-            onLoad(content);
+            onLoad(name);
         },
         
         addKoTemplate: function(name, strip, content) {  
