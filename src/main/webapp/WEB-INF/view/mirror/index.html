@@ -3,19 +3,9 @@
 	<body>	
 		<div layout:fragment="content">
 		
-			<div class="body">				
-				<div>
-					<center>
-						<h3>Welcome to the Mirror!</h3>
-					</center>
-				</div>	
+			<div class="body">	
 				
-				<div id="templates"></div>
-				
-				<div id="pagevm" data-bind="template: { name: 'Views/Mirror/Mirror.html', data: $data}">
-					<!-- <span data-bind="text: $data.text"></span>
-					<button type="button" class="btn btn-primary" data-bind="click: $data.click">Click Me</button> -->
-				</div>
+				<div id="pagevm" data-bind="template: { name: 'Views/Mirror/Mirror.html', data: $data}"></div>
 				
 				<script type="text/javascript">
 					require(["Views/Mirror/Mirror"], function(vm) {
