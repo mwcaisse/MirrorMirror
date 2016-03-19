@@ -1,0 +1,20 @@
+
+MirrorMirror
+
+	-Time Module
+		-shows the current time and date
+	
+	-Calendar Module
+		-Shows a calendar of the current week/month
+		
+	-Weather Module
+		-Shows the weather for today
+		-Shows the weather for the next 3 or so days
+		
+	-Traffic Module
+		-Shows the time to work in the morning
+		
+		-Option to show a bigger map of the area and
+			traffic, like google maps
+			
+	
