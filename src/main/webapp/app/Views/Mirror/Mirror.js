@@ -4,12 +4,25 @@ define("Views/Mirror/Mirror", ["AMD/koTemplateLoader!Views/Mirror/Mirror.html"],
 	
 	var vm = function() {
 		var self = this;
+
+		self.currentTime = ko.observable(new Date());
 		
-		self.text = ko.observable("Here is my awesome text!");
+		self.currentTimeDisplay = ko.computed(function() {
+			//http://momentjs.com/docs/#/displaying/
+			var formatString = "HH:mm:ss";
+			return moment(self.currentTime()).format(formatString);
+		});
 		
-		self.click = function() {
-			alert("You clicked me!");
-		};
+		self.currentDateDisplay = ko.computed(function() {
+			//http://momentjs.com/docs/#/displaying/
+			var formatString = "dddd, MMMM Do YYYY";
+			return moment(self.currentTime()).format(formatString);
+		});
+		
+		//set the update function to update the date
+		setInterval(function() {
+			self.currentTime(new Date());
+		}, 1000);
 		
 	};
 	

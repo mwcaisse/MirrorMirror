@@ -5,6 +5,10 @@
  * 
  * 
  * Knockout Template loader. Adopted / Based on Text plugin
+ * 
+ * Loads in the given file and after load creates a script tag with the resource name as the ID and the file's contents as its body/ children.
+ * 
+ * 
  */
 
 
