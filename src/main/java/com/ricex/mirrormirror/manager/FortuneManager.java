@@ -10,7 +10,7 @@ public class FortuneManager {
 		StringBuilder builder = new StringBuilder();
 		
 		try {
-			Process p = Runtime.getRuntime().exec("fortune -a");
+			Process p = Runtime.getRuntime().exec("fortune -so");
 			p.waitFor();
 			BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
 			
