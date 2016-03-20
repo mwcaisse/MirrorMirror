@@ -1,20 +1,28 @@
 package com.ricex.mirrormirror.web.spring.configuration;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.naming.NamingException;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
+import org.springframework.jndi.JndiTemplate;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 import com.google.gson.Gson;
+import com.ricex.mirrormirror.weather.ForecastRequester;
 import com.ricex.mirrormirror.web.controller.api.FortuneApiController;
+import com.ricex.mirrormirror.web.controller.api.WeatherApiController;
 import com.ricex.mirrormirror.web.controller.view.MirrorViewController;
 import com.ricex.mirrormirror.web.manager.FortuneManager;
+import com.ricex.mirrormirror.web.manager.WeatherManager;
 import com.ricex.mirrormirror.web.util.GsonFactory;
 
 @Configuration
@@ -32,11 +40,37 @@ public class ApplicationConfiguration extends WebMvcConfigurationSupport {
 		return new FortuneApiController(fortuneManager());
 	}
 	
+	@Bean
+	public WeatherApiController weatherApiController() throws NamingException {
+		return new WeatherApiController(weatherManager());
+	}
+	
 	///// ------- Managers ----------- \\\\
 	
 	@Bean
 	public FortuneManager fortuneManager() {
 		return new FortuneManager();
+	}
+	
+	@Bean
+	public WeatherManager weatherManager() throws NamingException {
+		return new WeatherManager(forecastRequester());
+	}	
+	
+	@Bean
+	public ForecastRequester forecastRequester() throws NamingException {
+		return new ForecastRequester(restTemplate(), forecastApiKey());
+	}
+	
+	@Bean
+	public RestTemplate restTemplate() {
+		RestTemplate template = new RestTemplate();
+		
+		List<HttpMessageConverter<?>> messageConverters = new ArrayList<HttpMessageConverter<?>>();
+		messageConverters.add(gsonMessageConverter());
+		template.setMessageConverters(messageConverters);
+		
+		return template;
 	}
 	
 	/*
@@ -56,6 +90,13 @@ public class ApplicationConfiguration extends WebMvcConfigurationSupport {
 	}
 	*/
 	
+	
+	@Bean
+	public String forecastApiKey() throws NamingException {
+		JndiTemplate template = new JndiTemplate();
+		return template.lookup("java:comp/env/MIRROR_FORECASTIO_API_KEY", String.class);
+	}
+	
 	@Bean
 	public Gson gsonBean() {
 		return gsonFactory().constructGson();
@@ -68,7 +109,9 @@ public class ApplicationConfiguration extends WebMvcConfigurationSupport {
 
 	@Bean
 	public GsonHttpMessageConverter gsonMessageConverter() {
-		return new GsonHttpMessageConverter(gsonBean());
+		GsonHttpMessageConverter converter = new GsonHttpMessageConverter();
+		converter.setGson(gsonBean());
+		return converter;
 	}
 	
 	@Override

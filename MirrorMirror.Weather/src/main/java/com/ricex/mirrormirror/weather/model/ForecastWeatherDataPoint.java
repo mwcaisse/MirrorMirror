@@ -28,6 +28,8 @@ public class ForecastWeatherDataPoint {
 	
 	private double precipAccumulation;
 	
+	private double precipProbability;
+	
 	private double temperature;
 	
 	private double tmperatureMin;
@@ -46,7 +48,7 @@ public class ForecastWeatherDataPoint {
 	
 	private double apparentTemperatureMax;
 	
-	private double apparentTemperatureMaxTime;
+	private Date apparentTemperatureMaxTime;
 	
 	private double dewPoint;
 	
@@ -367,14 +369,14 @@ public class ForecastWeatherDataPoint {
 	/**
 	 * @return the apparentTemperatureMaxTime
 	 */
-	public double getApparentTemperatureMaxTime() {
+	public Date getApparentTemperatureMaxTime() {
 		return apparentTemperatureMaxTime;
 	}
 
 	/**
 	 * @param apparentTemperatureMaxTime the apparentTemperatureMaxTime to set
 	 */
-	public void setApparentTemperatureMaxTime(double apparentTemperatureMaxTime) {
+	public void setApparentTemperatureMaxTime(Date apparentTemperatureMaxTime) {
 		this.apparentTemperatureMaxTime = apparentTemperatureMaxTime;
 	}
 
@@ -531,6 +533,22 @@ public class ForecastWeatherDataPoint {
 	public void setPressureError(double pressureError) {
 		this.pressureError = pressureError;
 	}
+
+	/**
+	 * @return the precipProbability
+	 */
+	public double getPrecipProbability() {
+		return precipProbability;
+	}
+
+	/**
+	 * @param precipProbability the precipProbability to set
+	 */
+	public void setPrecipProbability(double precipProbability) {
+		this.precipProbability = precipProbability;
+	}
+	
+	
 	
 	
 }

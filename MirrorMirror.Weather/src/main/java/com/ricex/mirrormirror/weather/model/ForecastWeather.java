@@ -22,7 +22,7 @@ public class ForecastWeather {
 	
 	private List<ForecastWeatherAlert> alerts;
 	
-	private List<ForecastWeatherFlag> flags;
+	private ForecastWeatherFlag flags;
 
 	/**
 	 * @return the latitude
@@ -153,17 +153,16 @@ public class ForecastWeather {
 	/**
 	 * @return the flags
 	 */
-	public List<ForecastWeatherFlag> getFlags() {
+	public ForecastWeatherFlag getFlags() {
 		return flags;
 	}
 
 	/**
 	 * @param flags the flags to set
 	 */
-	public void setFlags(List<ForecastWeatherFlag> flags) {
+	public void setFlags(ForecastWeatherFlag flags) {
 		this.flags = flags;
 	}
-	
 	
 	
 }

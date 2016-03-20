@@ -4,8 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 
+import com.ricex.mirrormirror.web.controller.BaseController;
 
-public class ApiController {
+
+public abstract class ApiController extends BaseController {
 
 	private static Logger log = LoggerFactory.getLogger(ApiController.class);
 

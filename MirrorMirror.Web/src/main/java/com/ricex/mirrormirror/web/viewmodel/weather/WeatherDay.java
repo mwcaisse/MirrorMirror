@@ -8,6 +8,8 @@ public class WeatherDay {
 	
 	private String summary;
 	
+	private String summaryDetailed;
+	
 	private String icon;
 	
 	private double tempHigh;
@@ -130,6 +132,22 @@ public class WeatherDay {
 	 */
 	public void setPrecipType(String precipType) {
 		this.precipType = precipType;
+	}
+
+	/**
+	 * @return the summaryDetailed
+	 */
+	public String getSummaryDetailed() {
+		return summaryDetailed;
+	}
+
+	/**
+	 * @param summaryDetailed the summaryDetailed to set
+	 */
+	public void setSummaryDetailed(String summaryDetailed) {
+		this.summaryDetailed = summaryDetailed;
 	}	
+	
+	
 	
 }

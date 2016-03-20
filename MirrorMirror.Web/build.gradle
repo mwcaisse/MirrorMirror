@@ -21,7 +21,7 @@ repositories {
 
 
 ext {
-	springVersion = '4.2.4.RELEASE'
+	springVersion = '4.2.5.RELEASE'
 	springSecurityVersion = '4.0.3.RELEASE'
 	mybatisVersion = '3.3.0'
 	mybatisSpringVersion = '1.2.3'
@@ -37,7 +37,8 @@ ext {
 
 dependencies {	
 	
-	//compile project(':MirrorMirror.Weather')
+	compile project(':MirrorMirror.Common')
+	compile project(':MirrorMirror.Weather')
 	
     compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
     
