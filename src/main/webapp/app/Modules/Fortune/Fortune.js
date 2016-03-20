@@ -26,9 +26,7 @@ define("Modules/Fortune/Fortune", ["Service/util", "Service/applicationProxy", "
 		self.load = function() {
 			self.fetchFortune();
 			util.runEveryMinute(self.fetchFortune, self.updateInterval);
-		};
-
-		
+		};		
 	};
 	
 	return vm;

@@ -14,7 +14,6 @@ define("Views/Mirror/Mirror",
 		
 		self.dateTime.load();
 		self.fortune.load();
-		
 	};
 	
 	return vm;

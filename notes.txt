@@ -11,6 +11,21 @@ MirrorMirror
 		-Shows the weather for today
 		-Shows the weather for the next 3 or so days
 		
+		
+		-Today's Weather
+			-Icon for the current weather
+			-Current Temp
+			-High temperature
+			-Low Temperature
+			-Summary / Description of the weather
+			
+		-Next Few (3?) Days Weather
+			-For Each Day...
+				-Day/Date
+				-Icon
+				-High Temp
+				-Low Temp
+		
 	-Traffic Module
 		-Shows the time to work in the morning
 		
