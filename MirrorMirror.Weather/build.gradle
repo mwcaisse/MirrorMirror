@@ -18,7 +18,7 @@ repositories {
 }
 
 ext {
-	springVersion = '4.2.4.RELEASE'
+	springVersion = '4.2.5.RELEASE'
 	springSecurityVersion = '4.0.3.RELEASE'
 	mybatisVersion = '3.3.0'
 	mybatisSpringVersion = '1.2.3'
@@ -34,6 +34,11 @@ ext {
 
 // In this section you declare the dependencies for your production and test code
 dependencies {
+	
+	//spring web
+	
+	compile group: 'org.springframework' name: 'spring-web', version: "$springVersion"
+
      //logging
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: "$log4jVersion"
     compile group: 'org.slf4j', name: 'slf4j-api', version: "$slf4jVersion"
