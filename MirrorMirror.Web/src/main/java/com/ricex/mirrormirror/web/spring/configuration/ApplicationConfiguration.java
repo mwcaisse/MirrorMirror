@@ -67,7 +67,7 @@ public class ApplicationConfiguration extends WebMvcConfigurationSupport {
 		RestTemplate template = new RestTemplate();
 		
 		List<HttpMessageConverter<?>> messageConverters = new ArrayList<HttpMessageConverter<?>>();
-		messageConverters.add(gsonMessageConverter());
+		messageConverters.add(gsonMessageConverterForcastIO());
 		template.setMessageConverters(messageConverters);
 		
 		return template;
@@ -103,6 +103,11 @@ public class ApplicationConfiguration extends WebMvcConfigurationSupport {
 	}
 	
 	@Bean
+	public Gson forecastIoGsonBean() {
+		return gsonFactory().constructGsonForecastIO();
+	}
+	
+	@Bean
 	public GsonFactory gsonFactory() {
 		return new GsonFactory();
 	}	
@@ -111,6 +116,13 @@ public class ApplicationConfiguration extends WebMvcConfigurationSupport {
 	public GsonHttpMessageConverter gsonMessageConverter() {
 		GsonHttpMessageConverter converter = new GsonHttpMessageConverter();
 		converter.setGson(gsonBean());
+		return converter;
+	}
+	
+	@Bean
+	public GsonHttpMessageConverter gsonMessageConverterForcastIO() {
+		GsonHttpMessageConverter converter = new GsonHttpMessageConverter();
+		converter.setGson(forecastIoGsonBean());
 		return converter;
 	}
 	

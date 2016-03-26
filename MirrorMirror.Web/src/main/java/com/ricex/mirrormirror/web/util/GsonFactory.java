@@ -6,6 +6,7 @@ import java.util.Date;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.ricex.mirrormirror.common.util.JsonDateMillisecondsEpochDeserializer;
+import com.ricex.mirrormirror.common.util.JsonDateSecondsEpochDeserializer;
 
 public class GsonFactory {
 	
@@ -22,6 +23,13 @@ public class GsonFactory {
 	public Gson constructGson() {
 		Gson gson = new GsonBuilder().serializeNulls().setDateFormat(DateFormat.LONG)
 				.registerTypeAdapter(Date.class, new JsonDateMillisecondsEpochDeserializer())
+				.create();		
+		return gson;
+	}
+	
+	public Gson constructGsonForecastIO() {
+		Gson gson = new GsonBuilder().serializeNulls().setDateFormat(DateFormat.LONG)
+				.registerTypeAdapter(Date.class, new JsonDateSecondsEpochDeserializer())
 				.create();		
 		return gson;
 	}

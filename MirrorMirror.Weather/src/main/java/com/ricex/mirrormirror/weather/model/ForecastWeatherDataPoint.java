@@ -32,9 +32,9 @@ public class ForecastWeatherDataPoint {
 	
 	private double temperature;
 	
-	private double tmperatureMin;
+	private double temperatureMin;
 	
-	private Date tmperatureMinTime;
+	private Date temperatureMinTime;
 	
 	private double temperatureMax;
 	
@@ -254,33 +254,6 @@ public class ForecastWeatherDataPoint {
 		this.temperature = temperature;
 	}
 
-	/**
-	 * @return the tmperatureMin
-	 */
-	public double getTmperatureMin() {
-		return tmperatureMin;
-	}
-
-	/**
-	 * @param tmperatureMin the tmperatureMin to set
-	 */
-	public void setTmperatureMin(double tmperatureMin) {
-		this.tmperatureMin = tmperatureMin;
-	}
-
-	/**
-	 * @return the tmperatureMinTime
-	 */
-	public Date getTmperatureMinTime() {
-		return tmperatureMinTime;
-	}
-
-	/**
-	 * @param tmperatureMinTime the tmperatureMinTime to set
-	 */
-	public void setTmperatureMinTime(Date tmperatureMinTime) {
-		this.tmperatureMinTime = tmperatureMinTime;
-	}
 
 	/**
 	 * @return the temperatureMax
@@ -547,8 +520,33 @@ public class ForecastWeatherDataPoint {
 	public void setPrecipProbability(double precipProbability) {
 		this.precipProbability = precipProbability;
 	}
-	
-	
-	
+
+	/**
+	 * @return the temperatureMin
+	 */
+	public double getTemperatureMin() {
+		return temperatureMin;
+	}
+
+	/**
+	 * @param temperatureMin the temperatureMin to set
+	 */
+	public void setTemperatureMin(double temperatureMin) {
+		this.temperatureMin = temperatureMin;
+	}
+
+	/**
+	 * @return the temperatureMinTime
+	 */
+	public Date getTemperatureMinTime() {
+		return temperatureMinTime;
+	}
+
+	/**
+	 * @param temperatureMinTime the temperatureMinTime to set
+	 */
+	public void setTemperatureMinTime(Date temperatureMinTime) {
+		this.temperatureMinTime = temperatureMinTime;
+	}
 	
 }

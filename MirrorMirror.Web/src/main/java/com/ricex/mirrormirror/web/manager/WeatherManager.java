@@ -2,9 +2,8 @@ package com.ricex.mirrormirror.web.manager;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
-
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ricex.mirrormirror.weather.ForecastRequester;
 import com.ricex.mirrormirror.weather.model.ForecastWeather;
@@ -39,12 +38,8 @@ public class WeatherManager {
 		WeatherCurrently currently = new WeatherCurrently();
 		ForecastWeatherDataPoint fwCurrently = forecast.getCurrently();
 		ForecastWeatherDataPoint dailyToday = new ForecastWeatherDataPoint();
-		Calendar today = Calendar.getInstance();
 		for (ForecastWeatherDataPoint day : forecast.getDaily().getData()) {
-			Calendar dayDate = Calendar.getInstance();
-			dayDate.setTime(day.getTime());
-			if (today.get(Calendar.YEAR) == dayDate.get(Calendar.YEAR) &&
-				today.get(Calendar.DAY_OF_YEAR) == dayDate.get(Calendar.DAY_OF_YEAR)) {
+			if (isDateToday(day.getTime())) {
 				dailyToday = day;
 				break;
 			}
@@ -57,15 +52,48 @@ public class WeatherManager {
 		currently.setSummary(fwCurrently.getSummary());
 		currently.setTempCurrent(fwCurrently.getApparentTemperature());
 		currently.setWindSpeed(fwCurrently.getWindSpeed());
-		currently.setTempHigh(dailyToday.getApparentTemperatureMax());
-		currently.setTempLow(dailyToday.getApparentTemperatureMin());
+		currently.setTempHigh(dailyToday.getTemperatureMax());
+		currently.setTempLow(dailyToday.getTemperatureMin());
 		currently.setSummaryDetailed(dailyToday.getSummary());
 		
 		return currently;
 	}
 	
+	protected static boolean isDateToday(Date date) {
+		Calendar today = Calendar.getInstance();
+		Calendar dateCalendar = Calendar.getInstance();
+		dateCalendar.setTime(date);
+		
+		return (today.get(Calendar.YEAR) == dateCalendar.get(Calendar.YEAR) &&
+				today.get(Calendar.DAY_OF_YEAR) == dateCalendar.get(Calendar.DAY_OF_YEAR)); 
+
+	}
+	
 	public static List<WeatherDay> constructViewModelFuture(ForecastWeather forecast) {
 		List<WeatherDay> future = new ArrayList<WeatherDay>();
+		
+		List<ForecastWeatherDataPoint> dayData = forecast.getDaily().getData();
+		
+		for (int i=0; i < dayData.size(); i++) {
+			ForecastWeatherDataPoint data = dayData.get(i);
+			WeatherDay day = new WeatherDay();
+			
+			if (isDateToday(data.getTime())) {
+				continue;
+			}
+			
+			day.setDay(data.getTime());
+			day.setIcon(data.getIcon());
+			day.setPrecipChance(data.getPrecipProbability());
+			day.setPrecipType(data.getPrecipType());
+			day.setSummary(data.getSummary());
+			day.setTempHigh(data.getTemperatureMax());
+			day.setTempLow(data.getTemperatureMin());
+			day.setWindSpeed(data.getWindSpeed());					
+					
+			future.add(day);
+			
+		}
 		
 		return future;
 	}
