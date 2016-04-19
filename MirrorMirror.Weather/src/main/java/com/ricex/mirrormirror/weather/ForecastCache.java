@@ -51,7 +51,7 @@ public class ForecastCache {
 	public ForecastWeather getCachedValue(double latitude, double longitude) {
 		WeatherLocation location = new WeatherLocation(latitude, longitude);
 		ForecastCacheEntry entry = cache.get(location);
-		if (!entry.hasExpired()) {
+		if (null != entry && !entry.hasExpired()) {
 			return entry.getWeather();
 		}
 		purgeCache(); //there is atleast one invalid entry in the cache, purge it
