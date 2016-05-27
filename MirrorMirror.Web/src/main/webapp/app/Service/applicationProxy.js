@@ -10,6 +10,12 @@ define("Service/applicationProxy", ["Service/proxy"], function (core) {
 				return core.get("/mirrormirror/api/fortune/");
 			}
 		};	
+		
+		self.weather = {
+			get: function(latitude, longitude) {
+				return core.get("/mirrormirror/api/weather/?latitude=" +latitude +"&longitude=" + longitude);
+			}
+		};
 				 
 		
 	})();

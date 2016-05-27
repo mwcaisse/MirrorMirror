@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ricex.mirrormirror.web.manager.WeatherManager;
+import com.ricex.mirrormirror.web.viewmodel.ResponseViewModel;
 import com.ricex.mirrormirror.web.viewmodel.weather.Weather;
 
 @Controller
@@ -20,8 +21,8 @@ public class WeatherApiController extends ApiController {
 	}
 	
 	@RequestMapping(value="/", method=RequestMethod.GET, produces={JSON})
-	public @ResponseBody Weather getCurrentWeather(@RequestParam double latitude, @RequestParam double longitude) {
-		return weatherManager.getWeather(latitude, longitude);
+	public @ResponseBody ResponseViewModel<Weather> getCurrentWeather(@RequestParam double latitude, @RequestParam double longitude) {
+		return new ResponseViewModel<Weather>(weatherManager.getWeather(latitude, longitude));
 	}
 	
 }
