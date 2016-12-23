@@ -1,4 +1,7 @@
-<i class="wi wi-night-sleet" style="font-size:50px"></i>
-
-<span style="font-size:50px"><span data-bind="text: $data.current().tempCurrent"></span>&deg;F</span>
-<span data-bind="text: $data.current().summary"></span>
+<i class="wi" style="font-size:50px" data-bind="css: $data.current.iconCss"></i>
+&nbsp;
+<span style="font-size:50px">
+	<span data-bind="text: $data.current.tempCurrent"></span><i class="wi wi-fahrenheit" style="font-size:50px"></i>
+</span>
+<br/>
+<span data-bind="text: $data.current.summary"></span>

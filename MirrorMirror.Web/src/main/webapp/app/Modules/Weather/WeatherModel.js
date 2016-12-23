@@ -7,16 +7,62 @@ define("Modules/Weather/WeatherModel", ["Service/util", "Service/applicationProx
 	var vm = function(data) {
 		var self = this;
 
-		self.tempCurrent = data.tempCurrent;
-		self.day = new Date(data.day);
-		self.summary = data.summary;
-		self.summaryDetailed = data.summaryDetailed;
-		self.icon = data.icon;
-		self.tempHigh = data.tempHigh;
-		self.tempLow = data.tempLow;
-		self.windSpeed = data.windSpeed;
-		self.precipChance = data.precipChance;
-		self.precipType = data.precipType;			
+		self.tempCurrent = ko.observable(0);
+		self.day = ko.observable(null);
+		self.summary = ko.observable("");
+		self.summaryDetailed = ko.observable("");
+		self.icon = ko.observable("");
+		self.tempHigh = ko.observable(0);
+		self.tempLow = ko.observable(0);
+		self.windSpeed = ko.observable(0);
+		self.precipChance = ko.observable(0);
+		self.precipType = ko.observable("");	
+		
+		self.iconCss = ko.computed(function () {
+			switch (self.icon()) {
+				case "clear-day":
+					return "wi-day-sunny";
+				case "clear-night":
+					return "wi-night-clear";
+				case "rain":
+					return "wi-rain";
+				case "snow":
+					return "wi-snow";
+				case "sleet":
+					return "wi-sleet";
+				case "wind":
+					return "wi-strong-wind";
+				case "fog":
+					return "wi-fog";
+				case "cloudy":
+					return "wi-cloudy";
+				case "partly-cloudy-day":
+					return "wi-day-cloudy";
+				case "partly-cloudy-night":
+					return "wi-night-alt-cloudy";
+				default:
+					return "wi-alien";
+
+			}
+		});	
+		
+		self.update = function (data) {
+			self.tempCurrent(data.tempCurrent);
+			self.day(new Date(data.day));
+			self.summary(data.summary);
+			self.summaryDetailed(data.summaryDetailed);
+			self.icon(data.icon);
+			self.tempHigh(data.tempHigh);
+			self.tempLow(data.tempLow);
+			self.windSpeed(data.windSpeed);
+			self.precipChance(data.precipChance);
+			self.precipType(data.precipType);	
+		};
+		
+		
+		if (typeof data !== "undefined" && null !== data) {
+			self.update(data);
+		}
 	};
 	
 	return vm;

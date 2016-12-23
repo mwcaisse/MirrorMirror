@@ -8,7 +8,7 @@ define("Modules/Weather/Weather", ["Service/util", "Service/applicationProxy", "
 		var self = this;
 
 		/** Weather currently */
-		self.current = ko.observable({});
+		self.current = new weatherModel();
 		
 		/** Weather in the future */
 		self.future = ko.observableArray([]);
@@ -24,7 +24,7 @@ define("Modules/Weather/Weather", ["Service/util", "Service/applicationProxy", "
 			var longitude = -71.445060;
 			proxy.weather.get(latitude, longitude).then(function (data) {
 				if (data.currently && data.future) {
-					self.current(new weatherModel(data.currently));
+					self.current.update(data.currently);
 					
 					var futureModels = [];
 					$.each (data.future, function (ind, elm) {
