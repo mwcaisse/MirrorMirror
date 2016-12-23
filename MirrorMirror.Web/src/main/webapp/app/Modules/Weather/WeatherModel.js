@@ -1,14 +1,18 @@
 "use strict";
 
-define("Modules/Weather/WeatherModel", ["Service/util", "Service/applicationProxy"],
+define("Modules/Weather/WeatherModel", 
+		["moment", 
+		 "Service/util", 
+		 "Service/applicationProxy", 
+		 "moment-duration-format"],
 		
-	function (util, proxy) {
+	function (moment, util, proxy) {
 	
 	var vm = function(data) {
 		var self = this;
 
 		self.tempCurrent = ko.observable(0);
-		self.day = ko.observable(null);
+		self.day = ko.observable(moment());
 		self.summary = ko.observable("");
 		self.summaryDetailed = ko.observable("");
 		self.icon = ko.observable("");
@@ -46,9 +50,13 @@ define("Modules/Weather/WeatherModel", ["Service/util", "Service/applicationProx
 			}
 		});	
 		
+		self.dayDisplay = ko.computed(function () {
+			return self.day().format("ddd"); 
+		});
+		
 		self.update = function (data) {
 			self.tempCurrent(data.tempCurrent);
-			self.day(new Date(data.day));
+			self.day(moment(data.day));
 			self.summary(data.summary);
 			self.summaryDetailed(data.summaryDetailed);
 			self.icon(data.icon);

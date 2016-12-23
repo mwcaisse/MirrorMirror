@@ -1,7 +1,26 @@
-<i class="wi" style="font-size:50px" data-bind="css: $data.current.iconCss"></i>
-&nbsp;
-<span style="font-size:50px">
-	<span data-bind="text: $data.current.tempCurrent"></span><i class="wi wi-fahrenheit" style="font-size:50px"></i>
-</span>
-<br/>
-<span data-bind="text: $data.current.summary"></span>
+<div style="color: #fff">
+	<i class="wi" style="font-size:50px" data-bind="css: $data.current.iconCss"></i>
+	&nbsp;
+	<span style="font-size:50px">
+		<span data-bind="text: $data.current.tempCurrent"></span><i class="wi wi-fahrenheit" style="font-size:50px"></i>
+	</span>
+	<br/>
+	<span data-bind="text: $data.current.summary"></span>
+</div>
+
+
+<div class="container">
+	<table style="margin: 0px auto;">
+		<tr data-bind="foreach: $data.future">
+			<td style="padding: 15px;">
+				<ul>
+					<li><span data-bind="text: $data.dayDisplay"></span></li>
+					<li><i class="wi" style="font-size:50px; padding-bottom: 15px" data-bind="css: $data.iconCss"></i></li>
+					<li style="font-size:20px;"><span data-bind="text: $data.tempHigh"></span><i class="wi wi-fahrenheit"></i></li>
+					<li style="font-size:20px;"><span data-bind="text: $data.tempLow"></span><i class="wi wi-fahrenheit"></i></li>
+				</ul>
+	
+			</td>
+		</tr>
+	</table>
+</div>

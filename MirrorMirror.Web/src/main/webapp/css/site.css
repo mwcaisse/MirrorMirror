@@ -5,3 +5,11 @@
 .date-display {
 	/*font-size: 45px;*/
 } 
+
+td {
+	background-color: #060606;
+}
+
+ul {
+	list-style-type: none;
+}
