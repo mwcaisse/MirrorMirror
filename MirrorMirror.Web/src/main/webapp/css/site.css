@@ -28,6 +28,10 @@ ul {
 	display: inline-block;
 }
 
+.current-weather .precip-chance {
+	font-size: 32px;
+}
+
 .future-weather {
 	font-size: 30px;
 }

@@ -27,7 +27,7 @@ define("Modules/Weather/Weather", ["Service/util", "Service/applicationProxy", "
 					self.current.update(data.currently);
 					
 					var futureModels = [];
-					$.each (data.future, function (ind, elm) {
+					$.each (data.future, function (ind, elm) {					
 						futureModels.push(new weatherModel(elm));
 					});						
 					self.future(futureModels);						

@@ -50,6 +50,17 @@ define("Modules/Weather/WeatherModel",
 			}
 		});	
 		
+		self.precipText = ko.computed(function () {
+			var precipChance = self.precipChance();
+			var precipType = self.precipType();
+			if (precipChance && precipType) {
+				precipChance = util.round(precipChance * 100, 0);
+				return "There is a " + precipChance + "% chance of " + precipType + " today.";
+			}			
+			return "";
+			
+		});
+		
 		self.dayDisplay = ko.computed(function () {
 			return self.day().format("ddd"); 
 		});
