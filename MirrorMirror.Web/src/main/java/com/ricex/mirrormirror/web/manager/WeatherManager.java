@@ -14,6 +14,8 @@ import com.ricex.mirrormirror.web.viewmodel.weather.WeatherDay;
 
 public class WeatherManager {
 
+	public static final int MAXIMUM_FUTURE_DAYS_DATA = 6;
+	
 	private ForecastRequester forecastRequester;
 	
 	public WeatherManager(ForecastRequester forecastRequester) {
@@ -74,7 +76,7 @@ public class WeatherManager {
 		
 		List<ForecastWeatherDataPoint> dayData = forecast.getDaily().getData();
 		
-		for (int i=0; i < dayData.size(); i++) {
+		for (int i=0; i < Math.min(dayData.size(), MAXIMUM_FUTURE_DAYS_DATA + 1); i++) {
 			ForecastWeatherDataPoint data = dayData.get(i);
 			WeatherDay day = new WeatherDay();
 			
