@@ -47,7 +47,11 @@ define("Modules/Weather/Weather", ["Service/util", "Service/applicationProxy", "
 		self.load = function() {
 			self.fetchWeather();
 			util.runEveryMinute(self.fetchWeather, self.updateInterval);
-		};		
+		};	
+		
+		self.refresh = function () {
+			self.fetchWeather();
+		};
 	};
 	
 	return vm;

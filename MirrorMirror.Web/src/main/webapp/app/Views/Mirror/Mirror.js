@@ -17,6 +17,16 @@ define("Views/Mirror/Mirror",
 		self.dateTime.load();
 		self.fortune.load();
 		self.weather.load();
+		
+		
+		$(document).on("keypress", function (event) {
+			if (event.which === 49) {
+				self.fortune.refresh();
+			}
+			else if (event.which === 50) {
+				self.weather.refresh();
+			}
+		});
 	};
 	
 	return vm;
