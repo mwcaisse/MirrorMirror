@@ -23,6 +23,11 @@ ul {
 	font-size: 50px;
 }
 
+.current-weather .high-low-temp {
+	font-size: 25px;
+	display: inline-block;
+}
+
 .future-weather {
 	font-size: 30px;
 }

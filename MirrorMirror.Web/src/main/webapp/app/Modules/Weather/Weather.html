@@ -4,8 +4,15 @@
 	<span>
 		<span data-bind="text: $data.current.tempCurrent"></span><i class="wi wi-fahrenheit"></i>
 	</span>
+	<div class="high-low-temp">
+		<ul>
+			<li><span data-bind="text: $data.current.tempHigh"></span><i class="wi wi-fahrenheit"></i></li>
+			<li><span data-bind="text: $data.current.tempLow"></span><i class="wi wi-fahrenheit"></i></li>
+		</ul>
+	</div>
 	&nbsp;
 	<span class="summary" data-bind="text: $data.current.summary"></span>
+	
 </div>
 
 

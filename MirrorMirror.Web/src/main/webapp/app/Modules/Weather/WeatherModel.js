@@ -55,13 +55,13 @@ define("Modules/Weather/WeatherModel",
 		});
 		
 		self.update = function (data) {
-			self.tempCurrent(data.tempCurrent);
+			self.tempCurrent(util.round(data.tempCurrent, 0));
 			self.day(moment(data.day));
 			self.summary(data.summary);
 			self.summaryDetailed(data.summaryDetailed);
 			self.icon(data.icon);
-			self.tempHigh(data.tempHigh);
-			self.tempLow(data.tempLow);
+			self.tempHigh(util.round(data.tempHigh, 0));
+			self.tempLow(util.round(data.tempLow, 0));
 			self.windSpeed(data.windSpeed);
 			self.precipChance(data.precipChance);
 			self.precipType(data.precipType);	

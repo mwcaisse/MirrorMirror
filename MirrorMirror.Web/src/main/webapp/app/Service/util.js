@@ -57,7 +57,14 @@ define("Service/util", [], function (text) {
 			}
 			
 			return self.runEveryMs(func, ms);			
-		}
+		};
+		
+		self.round = function (num, places) {
+			if (typeof places === "undefined") {
+				places = 2;
+			}
+			return parseFloat(num).toFixed(places);
+		};
 		
 	})();
 	
