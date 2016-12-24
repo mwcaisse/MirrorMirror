@@ -1,21 +1,21 @@
-<div style="color: #fff; font-size:75px">
+<div class="current-weather">
 	<i class="wi" data-bind="css: $data.current.iconCss"></i>
 	&nbsp;
 	<span>
 		<span data-bind="text: $data.current.tempCurrent"></span><i class="wi wi-fahrenheit"></i>
 	</span>
 	<br/>
-	<span style="font-size: 50px;" data-bind="text: $data.current.summary"></span>
+	<span class="summary" data-bind="text: $data.current.summary"></span>
 </div>
 
 
-<div class="container" style="font-size:30px;">
-	<table style="margin: 0px auto;">
+<div class="container future-weather">
+	<table>
 		<tr data-bind="foreach: $data.future">
-			<td style="padding: 15px;">
+			<td>
 				<ul>
 					<li><span data-bind="text: $data.dayDisplay"></span></li>
-					<li><i style="font-size:50px;" class="wi" style="padding-bottom: 25px;" data-bind="css: $data.iconCss"></i></li>
+					<li><i class="weather-icon wi"data-bind="css: $data.iconCss"></i></li>
 					<li><span data-bind="text: $data.tempHigh"></span><i class="wi wi-fahrenheit"></i></li>
 					<li><span data-bind="text: $data.tempLow"></span><i class="wi wi-fahrenheit"></i></li>
 				</ul>

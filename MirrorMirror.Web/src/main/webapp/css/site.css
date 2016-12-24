@@ -13,3 +13,29 @@ td {
 ul {
 	list-style-type: none;
 }
+
+.current-weather {
+	font-size: 75px;
+	color: #fff;
+}
+
+.current-weather .summary {
+	font-size: 50px;
+}
+
+.future-weather {
+	font-size: 30px;
+}
+
+.future-weather table {
+	margin: 0px auto;
+}
+
+.future-weather td {
+	padding: 15px;
+}
+
+.future-weather i.weather-icon {
+	font-size: 50px;
+	padding-bottom: 15px;
+}
