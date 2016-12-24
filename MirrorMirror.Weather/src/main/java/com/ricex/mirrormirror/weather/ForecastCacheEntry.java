@@ -62,9 +62,10 @@ public class ForecastCacheEntry {
 	 */
 	public boolean hasExpired() {
 		Duration cacheDuration = Duration.between(cacheInstant, Instant.now());
-		// if it retuns a positive # or zero, then the time the entry has been in the cache, is longer
-		// than the specified valid duration, and has expired
-		return validFor.compareTo(cacheDuration) >= 0; 
+		// if it retuns a negative # or zero, then the time the entry has been in the cache, is longer
+		// than the specified valid duration, and has expired		
+		int comp = validFor.compareTo(cacheDuration);
+		return comp <= 0; 
 
 	}
 

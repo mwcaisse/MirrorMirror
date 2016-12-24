@@ -23,7 +23,7 @@ public class ForecastRequester {
 	}
 	
 	public ForecastRequester(RestTemplate template, String apiKey) {
-		this(template, new ForecastCache(Duration.ofMinutes(30)), apiKey);
+		this(template, new ForecastCache(Duration.ofMinutes(15)), apiKey);
 	}
 	
 	public ForecastRequester(RestTemplate template, ForecastCache cache, String apiKey) {
