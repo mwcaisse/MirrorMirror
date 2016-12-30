@@ -1,6 +1,6 @@
 "use strict";
 
-define("Service/util", [], function (text) {
+define("Service/util", ["moment"], function (text) {
 	
 	var util = new (function() {
 		var self = this;
@@ -64,6 +64,16 @@ define("Service/util", [], function (text) {
 				places = 2;
 			}
 			return parseFloat(num).toFixed(places);
+		};
+		
+		self.formatDuration = function (duration, formatString) {
+			if (typeof formatString === "undefined") {
+				formatString = "hh:mm:ss";
+			}
+			if (duration) {
+				return duration.format(formatString);
+			}
+			return "";
 		};
 		
 	})();

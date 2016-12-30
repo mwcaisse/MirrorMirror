@@ -151,4 +151,10 @@ public class ApplicationConfiguration extends WebMvcConfigurationSupport {
 		configurer.enable();
 	}
 	
+	@Bean
+	public String googleMapsApiKey() throws NamingException {
+		JndiTemplate template = new JndiTemplate();
+		return template.lookup("java:comp/env/CARTRACKER_GOOGLE_MAPS_API_KEY", String.class); 
+	}
+	
 }
