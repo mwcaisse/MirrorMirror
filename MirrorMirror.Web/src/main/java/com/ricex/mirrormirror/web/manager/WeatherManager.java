@@ -22,8 +22,8 @@ public class WeatherManager {
 		this.forecastRequester = forecastRequester;
 	}
 	
-	public Weather getWeather(double latitude, double longitude) {
-		ForecastWeather forecast = forecastRequester.getWeather(latitude, longitude);		
+	public Weather getWeather(double latitude, double longitude, boolean useCache) {
+		ForecastWeather forecast = forecastRequester.getWeather(latitude, longitude, useCache);		
 		return constructViewModel(forecast);
 	}
 	

@@ -19,10 +19,10 @@ define("Modules/Weather/Weather", ["Service/util", "Service/applicationProxy", "
 		/** Fetch the weather from the web server and parse the results
 		 * 
 		 */
-		self.fetchWeather = function() {
+		self.fetchWeather = function(useCache) {
 			var latitude = 42.706415;
 			var longitude = -71.445060;
-			proxy.weather.get(latitude, longitude).then(function (data) {
+			proxy.weather.get(latitude, longitude, useCache).then(function (data) {
 				if (data.currently && data.future) {
 					self.current.update(data.currently);
 					
@@ -49,8 +49,8 @@ define("Modules/Weather/Weather", ["Service/util", "Service/applicationProxy", "
 			util.runEveryMinute(self.fetchWeather, self.updateInterval);
 		};	
 		
-		self.refresh = function () {
-			self.fetchWeather();
+		self.refresh = function (useCache) {
+			self.fetchWeather(useCache);
 		};
 	};
 	

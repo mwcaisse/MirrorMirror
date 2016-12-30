@@ -21,8 +21,11 @@ public class WeatherApiController extends ApiController {
 	}
 	
 	@RequestMapping(value="/", method=RequestMethod.GET, produces={JSON})
-	public @ResponseBody ResponseViewModel<Weather> getCurrentWeather(@RequestParam double latitude, @RequestParam double longitude) {
-		return new ResponseViewModel<Weather>(weatherManager.getWeather(latitude, longitude));
+	public @ResponseBody ResponseViewModel<Weather> getCurrentWeather(
+			@RequestParam double latitude, 
+			@RequestParam double longitude, 
+			@RequestParam(required = false, defaultValue = "true") boolean useCache) {
+		return new ResponseViewModel<Weather>(weatherManager.getWeather(latitude, longitude, useCache));
 	}
 	
 }

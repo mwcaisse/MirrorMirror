@@ -32,14 +32,28 @@ public class ForecastRequester {
 		this.apiKey = apiKey;
 	}
 	
-	/** Fetches a weather forcast from Forecast IO
+	/** Fetches a weather forecast from Forecast IO
 	 * 
 	 * @param latitude The latitude
 	 * @param longitude The longitude
 	 * @return
 	 */
 	public ForecastWeather getWeather(double latitude, double longitude) {
-		ForecastWeather weather = cache.getCachedValue(latitude, longitude);
+		return getWeather(latitude, longitude, true);
+	}
+	
+	/** Fetches a weather forecast from Forecast IO
+	 * 
+	 * @param latitude The latitude
+	 * @param longitude The longitude
+	 * @param useCache whether to use the weather cache or not
+	 * @return
+	 */
+	public ForecastWeather getWeather(double latitude, double longitude, boolean useCache) {
+		ForecastWeather weather = null;
+		if (useCache) {
+			weather = cache.getCachedValue(latitude, longitude);
+		}
 		if (null == weather) {
 			weather = getWeatherFromServer(latitude, longitude);
 		}

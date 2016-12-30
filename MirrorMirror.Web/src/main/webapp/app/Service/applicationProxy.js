@@ -12,8 +12,14 @@ define("Service/applicationProxy", ["Service/proxy"], function (core) {
 		};	
 		
 		self.weather = {
-			get: function(latitude, longitude) {
-				return core.get("/mirrormirror/api/weather/?latitude=" +latitude +"&longitude=" + longitude);
+			get: function(latitude, longitude, useCache) {
+				if (useCache === false) {
+					useCache = false;
+				}
+				else {
+					useCache = true;
+				}
+				return core.get("/mirrormirror/api/weather/?latitude=" +latitude +"&longitude=" + longitude + "&useCache=" + useCache);
 			}
 		};
 				 
